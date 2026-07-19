@@ -1,1 +1,347 @@
+# 🌐 Concurrent FTP Server
 
+A **Concurrent File Transfer Server** implemented in **C** using **TCP Socket Programming** and **Process-based Concurrency**. The server can handle multiple client requests simultaneously by creating a separate child process for each connected client using `fork()`.
+
+The project demonstrates fundamental concepts of **Computer Networks, Linux System Programming, Inter-Process Communication, and File Transfer Protocol implementation**.
+
+---
+
+# ✨ Features
+
+- Multi-client concurrent file transfer
+- TCP socket communication
+- Process-based concurrency using `fork()`
+- Download files from server
+- Custom application-layer protocol
+- Header-based file transfer
+- Automatic file creation on client
+- Error handling for missing files
+- Linux command-line application
+
+---
+
+# 🏗️ System Architecture
+
+```
+                   Multiple Clients
+        ┌────────────┬────────────┬────────────┐
+        ▼            ▼            ▼
+      Client 1    Client 2    Client 3
+            \        |        /
+             \       |       /
+              ▼      ▼      ▼
+             TCP Server Socket
+                     │
+               Accept Connection
+                     │
+                 fork()
+          ┌──────────┴──────────┐
+          ▼                     ▼
+   Child Process          Child Process
+      │                        │
+Read Requested File     Read Requested File
+      │                        │
+Send File to Client     Send File to Client
+```
+
+---
+
+# 📂 Project Structure
+
+```
+Concurrent FTP Server
+│
+├── Server.c
+│     ├── Socket Creation
+│     ├── Client Handling
+│     ├── Process Creation (fork)
+│     ├── File Transfer
+│     └── Header Generation
+│
+└── Client.c
+      ├── Server Connection
+      ├── File Request
+      ├── Header Parsing
+      ├── File Download
+      └── Local File Creation
+```
+
+---
+
+# ⚙️ Working Principle
+
+## Server
+
+The server performs the following steps:
+
+1. Create TCP socket.
+2. Bind socket to a port.
+3. Listen for client connections.
+4. Accept incoming requests.
+5. Create a new child process using `fork()`.
+6. Receive the requested filename.
+7. Read the file from disk.
+8. Send file metadata.
+9. Transfer file contents.
+10. Close the client connection.
+
+---
+
+## Client
+
+The client performs:
+
+1. Create TCP socket.
+2. Connect to the server.
+3. Send requested filename.
+4. Receive file header.
+5. Create output file.
+6. Download file contents.
+7. Save file locally.
+
+---
+
+# 📋 Communication Protocol
+
+The application uses a simple custom protocol.
+
+## Client Request
+
+```
+Filename
+```
+
+Example
+
+```
+Demo.txt
+```
+
+---
+
+## Server Response
+
+If the file exists:
+
+```
+OK <FileSize>
+```
+
+Example
+
+```
+OK 2048
+```
+
+If the file is unavailable:
+
+```
+ERR
+```
+
+The server then transmits the file contents.
+
+---
+
+# 🚀 Compilation
+
+## Server
+
+```bash
+gcc Server.c -o server
+```
+
+Run
+
+```bash
+./server 9000
+```
+
+---
+
+## Client
+
+```bash
+gcc Client.c -o client
+```
+
+Run
+
+```bash
+./client 127.0.0.1 9000 Demo.txt Downloaded.txt
+```
+
+Arguments
+
+| Argument | Description |
+|----------|-------------|
+| 1 | Server IP Address |
+| 2 | Port Number |
+| 3 | File to Download |
+| 4 | Output File Name |
+
+---
+
+# 💻 Example Session
+
+### Server
+
+```
+Server is running on port : 9000
+
+Server is waiting for client request...
+
+Client connected
+
+New child process created
+
+Requested file : Demo.txt
+
+File transfer completed
+```
+
+---
+
+### Client
+
+```
+Connecting to server...
+
+Requesting file : Demo.txt
+
+Receiving header...
+
+File Size : 2048 bytes
+
+Downloading...
+
+Download Complete
+```
+
+---
+
+# 📊 Workflow
+
+```
+Start Server
+      │
+Create Socket
+      │
+Bind Port
+      │
+Listen
+      │
+Accept Client
+      │
+fork()
+      │
+Read Filename
+      │
+Open File
+      │
+Send Header
+      │
+Transfer Data
+      │
+Close Connection
+```
+
+---
+
+# 🔧 Technologies Used
+
+- C Programming
+- TCP/IP Socket Programming
+- Linux System Programming
+- Process Management (`fork`)
+- File Handling
+- POSIX APIs
+- Network Programming
+
+---
+
+# 📚 Concepts Demonstrated
+
+- TCP Client-Server Architecture
+- Socket Programming
+- Concurrent Server Design
+- Process Creation
+- Inter-Process Communication
+- File Transfer Protocol Design
+- Binary File Streaming
+- Buffer Management
+- Linux System Calls
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- TCP Socket Programming
+- Concurrent Server Development
+- Linux Process Management
+- Network Communication
+- File I/O
+- POSIX System Calls
+- Client-Server Architecture
+- Application Layer Protocol Design
+
+---
+
+# 🚀 Future Enhancements
+
+- Upload support (PUT command)
+- Directory listing (LIST command)
+- User authentication
+- Password protection
+- SSL/TLS encrypted communication
+- Multi-threaded implementation using `pthread`
+- Resume interrupted downloads
+- File compression before transfer
+- Progress indicator
+- Logging and monitoring
+- Support for binary files of any size
+- Command-line shell with FTP-like commands (`GET`, `PUT`, `LS`, `PWD`, `QUIT`)
+
+---
+
+# 📈 Advantages
+
+- Supports multiple clients simultaneously
+- Lightweight implementation
+- Uses standard TCP sockets
+- Modular client-server architecture
+- Efficient file streaming
+- Demonstrates real-world networking concepts
+
+---
+
+# ⚠️ Limitations
+
+- Download-only functionality
+- No authentication mechanism
+- No encryption of transferred data
+- Linux/POSIX dependent
+- Process-based concurrency may consume more resources than threads
+- Limited command set
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
