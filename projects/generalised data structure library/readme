@@ -1,1 +1,273 @@
+# 🚀 Generalized Data Structure Library in C++
 
+A generic implementation of fundamental data structures using **C++ Templates**. This library demonstrates how to build reusable, type-independent data structures from scratch without relying on the C++ Standard Template Library (STL).
+
+## 📌 Features
+
+- Generic Programming using Templates
+- Object-Oriented Design
+- Dynamic Memory Allocation
+- Reusable Data Structure Classes
+- Supports Multiple Data Types (`int`, `char`, `float`, `double`, etc.)
+
+---
+
+# 📂 Implemented Data Structures
+
+| Data Structure | Status |
+|---------------|--------|
+| Singly Linear Linked List | ✅ Completed |
+| Doubly Linear Linked List | ✅ Completed |
+| Stack | ✅ Completed |
+| Queue | ✅ Completed |
+| Singly Circular Linked List | 🚧 Planned |
+| Doubly Circular Linked List | 🚧 Planned |
+
+---
+
+# 📖 Data Structures Overview
+
+## 1. Singly Linear Linked List
+
+Supports the following operations:
+
+- InsertFirst()
+- InsertLast()
+- InsertAtPos()
+- DeleteFirst()
+- DeleteLast()
+- DeleteAtPos()
+- Display()
+- Count()
+
+---
+
+## 2. Doubly Linear Linked List
+
+Supports:
+
+- InsertFirst()
+- InsertLast()
+- InsertAtPos()
+- DeleteFirst()
+- DeleteLast()
+- DeleteAtPos()
+- Display()
+- Count()
+
+---
+
+## 3. Stack (LIFO)
+
+Implemented using Linked List.
+
+Supported Operations:
+
+- push()
+- pop()
+- peep()
+- Display()
+- Count()
+
+---
+
+## 4. Queue (FIFO)
+
+Implemented using Linked List.
+
+Supported Operations:
+
+- enqueue()
+- dequeue()
+- Display()
+- Count()
+
+---
+
+# 🛠 Technologies Used
+
+- C++
+- Templates (Generic Programming)
+- Object-Oriented Programming
+- Dynamic Memory Allocation
+- Linked Lists
+
+---
+
+# 📁 Project Structure
+
+```
+Generalised Data Structure Library.cpp
+│
+├── Singly Linked List
+├── Doubly Linked List
+├── Stack
+├── Queue
+└── Demo (main function)
+```
+
+---
+
+# ▶️ Compilation
+
+Using g++
+
+```bash
+g++ "Generalised Data Structure Library.cpp" -o DataStructureLibrary
+```
+
+Run
+
+```bash
+./DataStructureLibrary
+```
+
+On Windows (MinGW)
+
+```bash
+g++ "Generalised Data Structure Library.cpp" -o DataStructureLibrary.exe
+DataStructureLibrary.exe
+```
+
+---
+
+# 💻 Example Usage
+
+```cpp
+SinglyLLL<int> obj;
+
+obj.InsertFirst(10);
+obj.InsertFirst(20);
+obj.InsertLast(30);
+
+obj.Display();
+
+cout << obj.Count();
+```
+
+Stack Example
+
+```cpp
+Stack<char> s;
+
+s.push('A');
+s.push('B');
+
+cout << s.pop();
+```
+
+Queue Example
+
+```cpp
+Queue<double> q;
+
+q.enqueue(10.5);
+q.enqueue(20.7);
+
+cout << q.dequeue();
+```
+
+---
+
+# 📊 Time Complexity
+
+## Singly Linked List
+
+| Operation | Complexity |
+|----------|------------|
+| InsertFirst | O(1) |
+| InsertLast | O(n) |
+| DeleteFirst | O(1) |
+| DeleteLast | O(n) |
+| InsertAtPos | O(n) |
+| DeleteAtPos | O(n) |
+| Count | O(1) |
+
+---
+
+## Doubly Linked List
+
+| Operation | Complexity |
+|----------|------------|
+| InsertFirst | O(1) |
+| InsertLast | O(n) |
+| DeleteFirst | O(1) |
+| DeleteLast | O(n) |
+| InsertAtPos | O(n) |
+| DeleteAtPos | O(n) |
+| Count | O(1) |
+
+---
+
+## Stack
+
+| Operation | Complexity |
+|----------|------------|
+| Push | O(1) |
+| Pop | O(1) |
+| Peep | O(1) |
+| Count | O(1) |
+
+---
+
+## Queue
+
+| Operation | Complexity |
+|----------|------------|
+| Enqueue | O(1) |
+| Dequeue | O(1) |
+| Count | O(1) |
+
+---
+
+# 🎯 Learning Objectives
+
+This project demonstrates:
+
+- Generic Programming
+- Template Classes
+- Dynamic Memory Management
+- Linked List Implementation
+- Stack & Queue Implementation
+- Object-Oriented Programming Concepts
+- Code Reusability
+- Data Structure Design
+
+---
+
+# 🔮 Future Improvements
+
+- Singly Circular Linked List
+- Doubly Circular Linked List
+- Binary Search Tree
+- AVL Tree
+- Red Black Tree
+- Heap
+- Graph
+- Hash Table
+- Iterator Support
+- Exception Handling
+- Destructor Implementation
+- Copy Constructor
+- Assignment Operator
+- STL-like Interface
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
