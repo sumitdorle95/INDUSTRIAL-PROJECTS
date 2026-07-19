@@ -1,1 +1,381 @@
+# 🐧 Kernel Interface Utility Suite
 
+A collection of **Linux command-line utilities** developed in **C** that demonstrate direct interaction with the Linux kernel through **POSIX system calls**. The suite reimplements several common Unix utilities from scratch, providing hands-on experience with **system programming, file management, directory operations, process information, and kernel interfaces**.
+
+The project is designed to help understand how standard Linux commands work internally by using low-level APIs instead of shell commands. :contentReference[oaicite:0]{index=0}
+
+---
+
+# ✨ Features
+
+- Custom implementations of common Linux utilities
+- Direct use of POSIX system calls
+- File and directory management
+- File metadata inspection
+- Process and system information retrieval
+- Linux filesystem interaction
+- Lightweight command-line applications
+- Educational implementation of Unix utilities
+
+---
+
+# 🏗️ Project Architecture
+
+```
+                  User
+                    │
+                    ▼
+          Command Line Utility
+                    │
+        ┌───────────┼───────────┐
+        ▼           ▼           ▼
+   File APIs   Directory APIs  System APIs
+        │           │           │
+        └───────────┼───────────┘
+                    ▼
+             Linux Kernel
+                    │
+                    ▼
+             File System / Process
+```
+
+---
+
+# 📂 Included Utilities
+
+| Utility | Description |
+|----------|-------------|
+| `pwdx` | Display current working directory |
+| `cdx` | Change current working directory |
+| `lsx` | List directory contents |
+| `lsxi` | List directory contents with inode numbers |
+| `touchx` | Create a new file |
+| `catx` | Display file contents |
+| `cpx` | Copy files |
+| `mvx` | Move/Rename files |
+| `rmx` | Delete files |
+| `statx` | Display file metadata |
+| `statxi` | Display file metadata with permissions |
+| `unamex` | Display operating system information |
+| `psx` | Process listing utility *(work in progress)* |
+
+---
+
+# ⚙️ Utility Descriptions
+
+## 📁 File Operations
+
+### touchx
+
+Create a new empty file.
+
+```bash
+./touchx Demo.txt
+```
+
+---
+
+### catx
+
+Display the contents of a text file.
+
+```bash
+./catx Demo.txt
+```
+
+---
+
+### cpx
+
+Copy one file to another.
+
+```bash
+./cpx Source.txt Destination.txt
+```
+
+---
+
+### mvx
+
+Move or rename files.
+
+```bash
+./mvx Old.txt New.txt
+```
+
+---
+
+### rmx
+
+Delete an existing file.
+
+```bash
+./rmx Demo.txt
+```
+
+---
+
+# 📂 Directory Operations
+
+## pwdx
+
+Display the current working directory.
+
+```bash
+./pwdx
+```
+
+---
+
+## cdx
+
+Change the current working directory.
+
+```bash
+./cdx /home/user/Documents
+```
+
+---
+
+## lsx
+
+List all files and directories.
+
+```bash
+./lsx
+```
+
+---
+
+## lsxi
+
+Supports:
+
+```bash
+./lsxi
+```
+
+Display directory entries.
+
+```bash
+./lsxi -a
+```
+
+Display all directory entries.
+
+```bash
+./lsxi -i
+```
+
+Display inode numbers along with file names.
+
+---
+
+# 📊 File Information
+
+## statx
+
+Displays:
+
+- File Name
+- File Size
+- Inode Number
+
+```bash
+./statx Demo.txt
+```
+
+---
+
+## statxi
+
+Displays:
+
+- File Name
+- File Size
+- Inode Number
+- Unix Permission Bits
+
+```bash
+./statxi Demo.txt
+```
+
+Example
+
+```
+-rwxr-xr-x
+```
+
+---
+
+# 🖥️ System Information
+
+## unamex
+
+Displays information about the Linux system.
+
+Output includes:
+
+- Operating System Name
+- Host Name
+- Kernel Release
+
+```bash
+./unamex
+```
+
+---
+
+## psx
+
+Intended to display running processes using the Linux `/proc` filesystem.
+
+*(Currently under development.)*
+
+---
+
+# 🛠 Technologies Used
+
+- C Programming
+- POSIX System Calls
+- Linux System Programming
+- File Handling
+- Directory Handling
+- Process Information
+- UNIX APIs
+
+---
+
+# 🔧 System Calls Used
+
+The project demonstrates practical use of:
+
+- `open()`
+- `read()`
+- `write()`
+- `close()`
+- `creat()`
+- `unlink()`
+- `rename()`
+- `stat()`
+- `access()`
+- `getcwd()`
+- `chdir()`
+- `opendir()`
+- `readdir()`
+- `closedir()`
+- `uname()`
+
+---
+
+# 🚀 Compilation
+
+Compile individual utilities:
+
+```bash
+gcc pwdx.c -o pwdx
+gcc lsx.c -o lsx
+gcc lsxi.c -o lsxi
+gcc touchx.c -o touchx
+gcc catx.c -o catx
+gcc cpx.c -o cpx
+gcc mvx.c -o mvx
+gcc rmx.c -o rmx
+gcc statx.c -o statx
+gcc statxi.c -o statxi
+gcc unamex.c -o unamex
+gcc psx.c -o psx
+```
+
+Run any utility:
+
+```bash
+./utility_name [arguments]
+```
+
+---
+
+# 📚 Operating System Concepts Covered
+
+- Linux Kernel Interface
+- POSIX System Calls
+- File Descriptors
+- File Metadata
+- Directory Traversal
+- Process Information
+- File Permissions
+- Inode Management
+- Filesystem Operations
+- User Space ↔ Kernel Space Interaction
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- Linux System Programming
+- UNIX Command Implementation
+- POSIX API Usage
+- File Management
+- Directory Handling
+- Kernel Interface Programming
+- Command-Line Utility Development
+- Operating System Fundamentals
+
+---
+
+# 🚀 Future Enhancements
+
+- Complete `psx` implementation
+- Recursive directory listing
+- Recursive file copy
+- Recursive file removal
+- Colored terminal output
+- Wildcard (`*`) support
+- Symbolic link support
+- Long listing format (`ls -l`)
+- Recursive search utility
+- Shell integration
+- Build system using Makefile
+
+---
+
+# 📈 Advantages
+
+- Lightweight implementation
+- Educational reimplementation of Unix commands
+- Demonstrates direct kernel interaction
+- Modular utility design
+- Easy to understand and extend
+- No external dependencies
+
+---
+
+# ⚠️ Limitations
+
+- Linux-specific implementation
+- Basic subset of standard Unix utility features
+- Minimal command-line option support
+- No recursive operations for file management
+- `psx` is currently incomplete
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
