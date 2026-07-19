@@ -1,1 +1,320 @@
+# 🖥️ Marvellous Customised Virtual File System (CVFS)
 
+A **Customised Virtual File System (CVFS)** implemented in **C**, simulating the core functionality of an operating system's file system. This project provides an in-memory file system with support for file creation, deletion, reading, writing, permission management, and a command-line shell interface.
+
+It is designed to help understand the internal working of file systems, inode management, file descriptors, and operating system concepts.
+
+---
+
+# ✨ Features
+
+- In-Memory Virtual File System
+- Linux-like Command Line Interface
+- File Creation and Deletion
+- Read and Write Operations
+- Permission Management (Read / Write)
+- Inode-Based File Management
+- Super Block Management
+- User File Descriptor Table (UFDT)
+- Dynamic Memory Allocation
+- Error Handling with Custom Error Codes
+
+---
+
+# 🏗️ System Architecture
+
+```
+                    User Shell
+                        │
+                        ▼
+              Command Interpreter
+                        │
+        ┌───────────────┼───────────────┐
+        ▼               ▼               ▼
+     SuperBlock       UFDT          DILB (Inodes)
+                        │
+                        ▼
+                  File Table
+                        │
+                        ▼
+                   File Buffer
+```
+
+---
+
+# 📂 Project Components
+
+## Boot Block
+
+Stores boot information about the virtual operating system.
+
+---
+
+## Super Block
+
+Maintains overall file system information.
+
+- Total Inodes
+- Free Inodes
+
+---
+
+## DILB (Disk Inode List Block)
+
+A linked list containing all available inodes.
+
+Each inode stores:
+
+- File Name
+- Inode Number
+- File Size
+- Actual File Size
+- File Type
+- Permission
+- Reference Count
+- Data Buffer
+
+---
+
+## UFDT (User File Descriptor Table)
+
+Stores information about currently opened files.
+
+Each entry contains:
+
+- Read Offset
+- Write Offset
+- Access Mode
+- Pointer to Inode
+
+---
+
+# 📋 Supported Commands
+
+| Command | Description |
+|----------|-------------|
+| `creat <filename> <permission>` | Create a new file |
+| `write <fd>` | Write data into a file |
+| `read <fd> <size>` | Read data from a file |
+| `unlink <filename>` | Delete a file |
+| `ls` | Display all files |
+| `man <command>` | Show manual page |
+| `help` | Display available commands |
+| `clear` | Clear terminal |
+| `exit` | Exit the virtual file system |
+
+---
+
+# 🔐 File Permissions
+
+| Value | Permission |
+|--------|------------|
+| 1 | Read |
+| 2 | Write |
+| 3 | Read + Write |
+
+---
+
+# 🖥️ Example Session
+
+```text
+Marvellous CVFS : > creat Demo.txt 3
+File gets successfully created with FD 3
+
+Marvellous CVFS : > write 3
+Enter the data that you want to write :
+Hello World
+
+11 bytes gets successfully written
+
+Marvellous CVFS : > read 3 11
+
+Data from file is :
+Hello World
+
+Marvellous CVFS : > ls
+
+Inode   File Name      Size
+1       Demo.txt       11
+
+Marvellous CVFS : > unlink Demo.txt
+
+File gets successfully deleted
+```
+
+---
+
+# ⚙️ Data Structures Used
+
+- Linked List
+- Inode
+- File Table
+- Super Block
+- Boot Block
+- User File Descriptor Table (UFDT)
+
+---
+
+# 🛠 Technologies Used
+
+- C Programming
+- Dynamic Memory Allocation
+- Structures
+- Pointers
+- Linked Lists
+- Operating System Concepts
+- File System Simulation
+
+---
+
+# 📁 Project Structure
+
+```
+Customised Virtual File System.cpp
+│
+├── Boot Block
+├── Super Block
+├── DILB (Disk Inode List Block)
+├── Inode Management
+├── UFDT (User File Descriptor Table)
+├── File Table
+├── File Operations
+│   ├── CreateFile()
+│   ├── WriteFile()
+│   ├── ReadFile()
+│   ├── UnlinkFile()
+│   └── LsFile()
+├── Shell Commands
+└── Main Driver
+```
+
+---
+
+# 🚀 Compilation
+
+### Linux / macOS
+
+```bash
+gcc "Customised Virtual File System.cpp" -o cvfs
+./cvfs
+```
+
+### Windows (MinGW)
+
+```bash
+gcc "Customised Virtual File System.cpp" -o cvfs.exe
+cvfs.exe
+```
+
+---
+
+# 📊 Project Workflow
+
+```
+Start CVFS
+      │
+      ▼
+Initialize Boot Block
+      │
+      ▼
+Initialize Super Block
+      │
+      ▼
+Create DILB
+      │
+      ▼
+Initialize UFDT
+      │
+      ▼
+Launch Shell
+      │
+      ▼
+Execute Commands
+      │
+      ▼
+Terminate
+```
+
+---
+
+# ❗ Error Handling
+
+The project provides custom error codes for situations such as:
+
+- Invalid Parameters
+- File Already Exists
+- File Not Found
+- Permission Denied
+- No Free Inodes
+- Maximum Open Files Reached
+- Insufficient Storage Space
+- Insufficient Data
+
+---
+
+# 📚 Operating System Concepts Covered
+
+- Virtual File System
+- Inode Architecture
+- File Descriptors
+- Memory Management
+- Process File Tables
+- Permission Management
+- Buffer Management
+- Linked Lists
+- System Calls Simulation
+- Command Line Interface
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- Operating System Fundamentals
+- File System Design
+- Dynamic Memory Allocation
+- Linked List Implementation
+- Modular Programming
+- Command Line Interface Development
+- Low-Level Memory Management
+- Custom Error Handling
+
+---
+
+# 🔮 Future Enhancements
+
+- Open File Command
+- Close File Command
+- Seek (lseek) Support
+- Rename File
+- Copy File
+- Move File
+- File Encryption
+- Directory Support
+- Hierarchical Folder Structure
+- User Authentication
+- Persistent Storage (Disk-Based)
+- File Compression
+- Multi-User Access
+- Logging and Audit Trail
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## ⭐ If you found this project useful, consider giving it a star and sharing it with others!
