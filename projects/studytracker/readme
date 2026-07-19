@@ -1,1 +1,309 @@
+# 📚 Marvellous Study Tracker
 
+A simple and interactive **Java console application** for recording, managing, and analyzing daily study sessions. The application enables users to maintain study logs, generate summaries, and export study history to a CSV file for future analysis.
+
+This project demonstrates the use of **Object-Oriented Programming, Java Collections Framework, File Handling, Date & Time API, and Data Aggregation**.
+
+---
+
+# ✨ Features
+
+- Add daily study logs
+- Automatically records current date
+- Store subject, duration, and description
+- View all study records
+- Export study history to CSV
+- Generate summary by date
+- Generate summary by subject
+- Menu-driven console interface
+
+---
+
+# 🏗️ Project Architecture
+
+```
+                 User
+                  │
+                  ▼
+         Console Menu Interface
+                  │
+      ┌───────────┼────────────┐
+      ▼           ▼            ▼
+ Insert Log   Display Logs   Export CSV
+      │
+      ▼
+ ArrayList<StudyLog>
+      │
+      ▼
+Summary by Date / Subject
+```
+
+---
+
+# 📂 Project Structure
+
+```
+StudyTracker.java
+│
+├── StudyLog
+│      ├── Date
+│      ├── Subject
+│      ├── Duration
+│      └── Description
+│
+├── StudyTracker
+│      ├── InsertLog()
+│      ├── DisplayLog()
+│      ├── ExportCSV()
+│      ├── SummaryByDate()
+│      └── SummaryBySubject()
+│
+└── MarvellousStudyTracker
+       └── Main Driver
+```
+
+---
+
+# 📋 Features Explained
+
+## 📝 Add Study Log
+
+Each study session records:
+
+- Current Date
+- Subject Name
+- Study Duration (Hours)
+- Description of the Session
+
+Example
+
+```
+Date : 2026-07-19
+
+Subject : Java
+
+Duration : 2.5 Hours
+
+Description : Collections Framework
+```
+
+---
+
+## 📖 View Study Logs
+
+Displays every study record stored during the application's execution.
+
+Example
+
+```
+2026-07-19 | Java | 2.5 | Collections Framework
+2026-07-19 | DSA | 3.0 | Binary Trees
+```
+
+---
+
+## 📄 Export to CSV
+
+Exports all study logs into:
+
+```
+MarvellousStudyTracker.csv
+```
+
+CSV Format
+
+```
+Date,Subject,Duration,Description
+2026-07-19,Java,2.5,Collections Framework
+2026-07-19,DSA,3.0,Binary Trees
+```
+
+The generated CSV can be opened in:
+
+- Microsoft Excel
+- Google Sheets
+- LibreOffice Calc
+
+---
+
+## 📊 Summary by Date
+
+Calculates total study hours for each day.
+
+Example
+
+```
+Date : 2026-07-19
+Total Study Duration : 5.5 Hours
+```
+
+---
+
+## 📈 Summary by Subject
+
+Calculates the total time spent on every subject.
+
+Example
+
+```
+Java : 12 Hours
+
+Python : 8 Hours
+
+DSA : 24 Hours
+```
+
+---
+
+# 🛠 Technologies Used
+
+- Java
+- Object-Oriented Programming
+- Java Collections Framework
+- ArrayList
+- TreeMap
+- File Handling
+- CSV Generation
+- Java Time API (LocalDate)
+
+---
+
+# 📋 Menu
+
+```
+1. Insert Study Log
+2. View Study Logs
+3. Export Logs to CSV
+4. Summary by Date
+5. Summary by Subject
+6. Exit
+```
+
+---
+
+# 🚀 Compilation
+
+Compile
+
+```bash
+javac StudyTracker.java
+```
+
+Run
+
+```bash
+java MarvellousStudyTracker
+```
+
+---
+
+# 📊 Workflow
+
+```
+Start Application
+        │
+        ▼
+ Display Menu
+        │
+        ▼
+Select Operation
+        │
+        ▼
+Store Study Log
+        │
+        ▼
+Generate Reports
+        │
+        ▼
+Export CSV (Optional)
+        │
+        ▼
+Exit
+```
+
+---
+
+# 📚 Concepts Demonstrated
+
+- Object-Oriented Programming
+- Encapsulation
+- Java Collections
+- ArrayList
+- TreeMap
+- File Handling
+- CSV File Generation
+- Date & Time API
+- Console-Based User Interface
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- Java Class Design
+- Data Modeling
+- Collection Framework
+- Data Aggregation
+- Report Generation
+- File Export
+- Menu-Driven Programming
+- Java Exception Handling
+
+---
+
+# 🚀 Future Enhancements
+
+- Persistent database support (MySQL/SQLite)
+- User authentication
+- Login and registration system
+- Weekly and monthly reports
+- Study goals and reminders
+- Charts and analytics
+- JavaFX/Swing GUI
+- PDF report generation
+- Search and filter logs
+- Subject categories and tags
+- Pomodoro timer integration
+- Cloud synchronization
+
+---
+
+# 📈 Advantages
+
+- Simple and user-friendly interface
+- Easy to maintain study history
+- Generates useful summaries
+- CSV export for external analysis
+- Lightweight console application
+- Modular object-oriented design
+
+---
+
+# ⚠️ Limitations
+
+- Data is stored only during runtime (no persistent storage)
+- Console-based interface
+- Single-user application
+- No editing or deleting of study logs
+- No graphical analytics
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
