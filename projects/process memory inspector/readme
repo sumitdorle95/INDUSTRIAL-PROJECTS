@@ -1,1 +1,335 @@
+# 🖥️ Process Memory Inspector
 
+A Linux-based **Process Memory Inspector** developed in **C** that analyzes a running process using the **/proc filesystem**. The tool displays essential process information along with a detailed memory layout by parsing `/proc/<pid>/status` and `/proc/<pid>/maps`.
+
+This project demonstrates core **Operating System concepts** such as virtual memory, process management, memory segmentation, and interaction with the Linux `/proc` virtual file system.
+
+---
+
+# ✨ Features
+
+- Inspect any running Linux process using its PID
+- Display process information
+- Parse the Linux `/proc` filesystem
+- Visualize the virtual memory layout
+- Classify memory regions
+- Calculate memory segment sizes
+- Identify anonymous memory regions
+- Lightweight command-line utility
+
+---
+
+# 🏗️ System Architecture
+
+```
+              User
+                │
+                ▼
+       Enter Process PID
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+/proc/<pid>/status   /proc/<pid>/maps
+        │                │
+        ▼                ▼
+ Process Details   Memory Map Parser
+        │                │
+        └───────┬────────┘
+                ▼
+      Process Memory Report
+```
+
+---
+
+# 📂 Project Structure
+
+```
+process memory inspector.c
+│
+├── GetSectionType()
+├── ShowProcessInformation()
+├── ShowMemoryLayout()
+└── Main Driver
+```
+
+---
+
+# 📋 Features Explained
+
+## 📌 Process Information
+
+The application retrieves information from:
+
+```
+/proc/<pid>/status
+```
+
+Displays:
+
+- Process Name
+- Process ID (PID)
+- Process State
+- Number of Threads
+
+Example
+
+```
+Name: firefox
+
+Pid: 1256
+
+State: Sleeping
+
+Threads: 24
+```
+
+---
+
+## 🧠 Memory Layout Inspection
+
+The application reads
+
+```
+/proc/<pid>/maps
+```
+
+and extracts
+
+- Start Address
+- End Address
+- Memory Size
+- Permissions
+- Section Type
+- Region Description
+
+Example
+
+```
+Address Start
+Address End
+Size (KB)
+Permissions
+Section Type
+Details
+```
+
+---
+
+# 🏷️ Memory Sections Identified
+
+The inspector classifies memory regions into:
+
+| Section | Description |
+|----------|-------------|
+| TEXT | Executable code segment |
+| DATA | Read-write data segment |
+| HEAP | Dynamic memory allocation |
+| STACK | Function call stack |
+| VDSO | Virtual Dynamic Shared Object |
+| VVAR | Virtual Variables |
+| OTHER | Unclassified memory region |
+| Anonymous | Memory without a named mapping |
+
+---
+
+# 🔑 Memory Permissions
+
+| Permission | Meaning |
+|------------|---------|
+| `r` | Read |
+| `w` | Write |
+| `x` | Execute |
+| `p` | Private Mapping |
+| `s` | Shared Mapping |
+
+Example
+
+```
+r-xp
+```
+
+means
+
+- Read
+- Execute
+- Private Mapping
+
+---
+
+# 🛠 Technologies Used
+
+- C Programming
+- Linux System Programming
+- `/proc` Filesystem
+- File Handling
+- String Manipulation
+- Memory Analysis
+- Process Inspection
+
+---
+
+# 🚀 Compilation
+
+Compile
+
+```bash
+gcc "process memory inspector.c" -o inspector
+```
+
+Run
+
+```bash
+./inspector
+```
+
+---
+
+# 💻 Example Execution
+
+```
+----------------------------------------------------------
+----------- Marvellous Process Inspector -----------------
+----------------------------------------------------------
+
+Enter the PID of a process that you want to inspect
+
+2458
+```
+
+Output
+
+```
+Process Information
+
+Name
+PID
+State
+Threads
+
+Memory Layout
+
+Start Address
+End Address
+Size
+Permissions
+Section
+Description
+```
+
+---
+
+# 📊 Workflow
+
+```
+Start Program
+      │
+      ▼
+Read PID
+      │
+      ▼
+Open /proc/<pid>/status
+      │
+      ▼
+Display Process Information
+      │
+      ▼
+Open /proc/<pid>/maps
+      │
+      ▼
+Parse Memory Regions
+      │
+      ▼
+Classify Sections
+      │
+      ▼
+Display Memory Layout
+      │
+      ▼
+Exit
+```
+
+---
+
+# 📚 Operating System Concepts Covered
+
+- Linux Process Management
+- Virtual Memory
+- Memory Mapping
+- Process Control Block (PCB)
+- Process Address Space
+- Stack and Heap
+- Text and Data Segments
+- `/proc` Virtual File System
+- System Programming
+- Memory Permissions
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- Linux System Programming
+- Process Inspection
+- Parsing System Files
+- File I/O in C
+- String Processing
+- Memory Region Analysis
+- Operating System Internals
+- Virtual Memory Management
+
+---
+
+# 🚀 Future Enhancements
+
+- Colored terminal output
+- Memory usage statistics
+- Shared library visualization
+- Process tree inspection
+- Interactive TUI using ncurses
+- Export report to CSV or JSON
+- Memory region filtering
+- Search by process name
+- Real-time monitoring mode
+- Graphical visualization of memory segments
+
+---
+
+# 📈 Advantages
+
+- Lightweight and fast
+- Uses native Linux interfaces
+- No external dependencies
+- Easy to understand
+- Useful for learning OS concepts
+- Provides insight into process memory organization
+
+---
+
+# ⚠️ Limitations
+
+- Linux-specific (depends on the `/proc` filesystem)
+- Requires appropriate permissions to inspect some processes
+- Read-only inspection (no memory modification)
+- Console-based interface
+- Limited to information exposed by the kernel
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
