@@ -1,4 +1,4 @@
-# 🚀 Marvellous Full Stack REST API
+# 🚀  Full Stack REST API
 
 A **Spring Boot RESTful Web Service** built using **Java**, **Spring Boot**, and **MongoDB** that provides CRUD operations for managing training batches. The application follows a layered architecture consisting of **Controller**, **Service**, **Repository**, and **Entity** layers, demonstrating modern backend development practices.
 
@@ -44,7 +44,7 @@ This project serves as a beginner-friendly backend application showcasing REST A
 # 📂 Project Structure
 
 ```
-MarvellousFullStack
+FullStack
 │
 ├── Controller
 │   ├── BatchEntryController
