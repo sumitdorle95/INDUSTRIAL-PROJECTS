@@ -1,1 +1,302 @@
+# 📦 File Packer & Unpacker with XOR Encryption
 
+A Java-based utility that packs multiple text files into a single archive file and securely restores them using **XOR Encryption**. The project demonstrates concepts of **file handling, binary I/O streams, encryption, and custom archive creation** without relying on third-party libraries.
+
+---
+
+# ✨ Features
+
+- Pack multiple files into a single archive
+- Unpack archived files back to their original form
+- XOR-based encryption during packing
+- Automatic decryption during unpacking
+- Custom archive format
+- Header-based metadata storage
+- Binary file processing using Java Streams
+- Lightweight and easy to understand
+
+---
+
+# 🔐 Encryption Technique
+
+The project uses **XOR Encryption** with a fixed key.
+
+```
+Encrypted Byte = Original Byte XOR Key
+Decrypted Byte = Encrypted Byte XOR Key
+```
+
+Since XOR is reversible:
+
+```
+A XOR K XOR K = A
+```
+
+the same key is used for both encryption and decryption.
+
+Current Key:
+
+```java
+0x11
+```
+
+---
+
+# 🏗️ Project Architecture
+
+```
+                Source Folder
+                     │
+         ┌───────────┴───────────┐
+         │                       │
+         ▼                       ▼
+   Read File Data         Generate Header
+         │                       │
+         └───────────┬───────────┘
+                     ▼
+             XOR Encryption
+                     │
+                     ▼
+              Packed Archive
+                     │
+      ─────────────────────────────────
+                     │
+                     ▼
+             Read Archive
+                     │
+             Parse Header
+                     │
+             XOR Decryption
+                     │
+                     ▼
+           Restored Original Files
+```
+
+---
+
+# 📂 Project Files
+
+```
+Packer.java
+Unpacker.java
+```
+
+---
+
+# ⚙️ Working Principle
+
+## Packing Process
+
+1. Read all text files from the selected folder.
+2. Generate a **100-byte header** for each file containing:
+   - File Name
+   - File Size
+3. Encrypt the file contents using XOR.
+4. Write the header followed by the encrypted data into a single packed file.
+
+---
+
+## Unpacking Process
+
+1. Read the packed archive.
+2. Extract the header.
+3. Retrieve the original file name and size.
+4. Read the encrypted data.
+5. Decrypt it using the same XOR key.
+6. Recreate the original file.
+
+---
+
+# 📑 Archive Format
+
+Each file inside the packed archive is stored as:
+
+```
+---------------------------------------------------
+| 100 Bytes Header | Encrypted File Data |
+---------------------------------------------------
+```
+
+Header Format
+
+```
+FileName FileSize
+```
+
+Example
+
+```
+Demo.txt 1024
+```
+
+Remaining bytes are padded with spaces to maintain a fixed header size.
+
+---
+
+# 🛠 Technologies Used
+
+- Java
+- FileInputStream
+- FileOutputStream
+- Binary File Handling
+- XOR Encryption
+- Java Collections
+- Exception Handling
+
+---
+
+# 📋 How to Run
+
+## Compile
+
+```bash
+javac Packer.java
+javac Unpacker.java
+```
+
+---
+
+## Run Packer
+
+```bash
+java program606
+```
+
+Example
+
+```
+Enter the name of folder :
+Documents
+
+Enter the name of packed file :
+Archive.pack
+```
+
+---
+
+## Run Unpacker
+
+```bash
+java program614
+```
+
+Example
+
+```
+Enter the name of packed file :
+Archive.pack
+```
+
+The original files will be recreated automatically.
+
+---
+
+# 📊 Workflow
+
+```
+Folder
+   │
+   ▼
+Read Files
+   │
+Generate Header
+   │
+Encrypt Data
+   │
+Create Archive
+   │
+──────────────
+   │
+Read Archive
+   │
+Read Header
+   │
+Decrypt Data
+   │
+Restore Files
+```
+
+---
+
+# 🔑 Concepts Demonstrated
+
+- File Packing
+- File Extraction
+- Binary File Processing
+- XOR Encryption
+- Custom File Format Design
+- Java Streams
+- File Metadata Management
+- Buffer Management
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates:
+
+- Java File Handling
+- Binary I/O Streams
+- Encryption and Decryption
+- Custom Archive Design
+- Memory Buffer Management
+- Data Serialization Concepts
+- Object-Oriented Programming
+- Exception Handling
+
+---
+
+# 🚀 Future Enhancements
+
+- Support for all file types (images, PDFs, videos, etc.)
+- AES-256 encryption
+- Password-protected archives
+- Compression before encryption
+- Recursive folder packing
+- Progress bar during packing/unpacking
+- Archive integrity verification using SHA-256
+- GUI using Java Swing or JavaFX
+- Multi-threaded file processing
+- Custom archive extension (.mpack)
+
+---
+
+# 📈 Advantages
+
+- Lightweight implementation
+- Easy to understand
+- Demonstrates core operating system and file handling concepts
+- No external libraries required
+- Simple encryption mechanism
+- Efficient binary storage format
+
+---
+
+# ⚠️ Limitations
+
+- Currently packs only `.txt` files
+- Uses fixed XOR key (not suitable for production security)
+- No file compression
+- No password authentication
+- Flat folder structure only
+- Limited archive metadata
+
+---
+
+# 👨‍💻 Author
+
+**Sumit Dorle**
+
+Artificial Intelligence & Data Science Engineer
+
+GitHub: https://github.com/sumitdorle95
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
